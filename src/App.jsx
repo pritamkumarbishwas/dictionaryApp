@@ -41,10 +41,11 @@ const App = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           data-cy="search-input"
         />
-        <button onClick={handleSearch} data-cy="search-button">Search</button>
+        <button onClick={handleSearch} >Search</button>
       </div>
-      {error && <p className="error" data-cy="error-message">{error}</p>}
+      
       <p className="definition" data-cy="definition">Definition: {definition && `${definition}`}</p>
+      {error && <p className="error" data-cy="error-message">{error}</p>}
     </div>
   );
 };
