@@ -19,7 +19,11 @@ const App = () => {
       "State": "An object that stores data for a component."
     };
 
-    const foundDefinition = definitions[searchTerm];
+    const searchTermLowerCase = searchTerm.toLowerCase();
+
+    const foundDefinition = Object.entries(definitions).find(([word]) =>
+      word.toLowerCase().includes(searchTermLowerCase)
+    );
 
     if (foundDefinition) {
       setError('');
@@ -43,7 +47,7 @@ const App = () => {
         />
         <button onClick={handleSearch} >Search</button>
       </div>
-      
+
       <p className="definition" data-cy="definition">Definition: {definition && `${definition}`}</p>
       {error && <p className="error" data-cy="error-message">{error}</p>}
     </div>
