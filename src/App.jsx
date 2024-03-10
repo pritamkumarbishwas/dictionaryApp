@@ -6,18 +6,18 @@ const App = () => {
   const [definition, setDefinition] = useState('');
   const [error, setError] = useState('');
 
+  const definitions = {
+    "React": "A JavaScript library for building user interfaces.",
+    "Component": "A reusable building block in React.",
+    "State": "An object that stores data for a component."
+  };
+
   const handleSearch = () => {
     if (!searchTerm.trim()) {
       setError('Please enter a search term');
       setDefinition('');
       return;
     }
-
-    const definitions = {
-      "React": "A JavaScript library for building user interfaces.",
-      "Component": "A reusable building block in React.",
-      "State": "An object that stores data for a component."
-    };
 
     const searchTermLowerCase = searchTerm.toLowerCase();
 
@@ -27,7 +27,7 @@ const App = () => {
 
     if (foundDefinition) {
       setError('');
-      setDefinition(foundDefinition);
+      setDefinition(foundDefinition[1]);
     } else {
       setError('Word not found in the dictionary.');
       setDefinition('');
@@ -45,10 +45,10 @@ const App = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           data-cy="search-input"
         />
-        <button onClick={handleSearch} >Search</button>
+        <button onClick={handleSearch} data-cy="search-button">Search</button>
       </div>
 
-      <p className="definition" data-cy="definition">Definition: {definition && `${definition}`}</p>
+      {definition && <p className="definition" data-cy="definition">Definition: {definition}</p>}
       {error && <p className="error" data-cy="error-message">{error}</p>}
     </div>
   );
