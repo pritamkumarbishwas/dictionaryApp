@@ -48,8 +48,7 @@ const App = () => {
         <button onClick={handleSearch} data-cy="search-button">Search</button>
       </div>
 
-      {definition && <p className="definition" data-cy="definition">Definition: {definition}</p>}
-      {error && <p className="error" data-cy="error-message">{error}</p>}
+      <p className="definition" data-cy="definition">Definition: {definition} {error}</p>
     </div>
   );
 };
